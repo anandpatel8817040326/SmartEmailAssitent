@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EmailRepository extends JpaRepository<EmailDraft, Long> {
     List<EmailDraft> findAllByOrderByCreatedAtDesc();
+    List<EmailDraft> findAllByUserIdOrderByCreatedAtDesc(Long userId);
 }

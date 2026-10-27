@@ -2,15 +2,18 @@ package com.ai.email.dto;
 
 public class EmailSendRequest {
     private Long draftId;
+    private String sender;
     private String recipient;
     private String subject;
     private String body;
     private String tone;
+    private Long userId;
 
     public EmailSendRequest() {}
 
-    public EmailSendRequest(Long draftId, String recipient, String subject, String body, String tone) {
+    public EmailSendRequest(Long draftId, String sender, String recipient, String subject, String body, String tone) {
         this.draftId = draftId;
+        this.sender = sender;
         this.recipient = recipient;
         this.subject = subject;
         this.body = body;
@@ -49,11 +52,27 @@ public class EmailSendRequest {
         this.body = body;
     }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
     public String getTone() {
         return tone;
     }
 
     public void setTone(String tone) {
         this.tone = tone;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

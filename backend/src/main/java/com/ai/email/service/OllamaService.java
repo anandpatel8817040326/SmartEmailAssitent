@@ -43,10 +43,17 @@ public class OllamaService {
     }
 
     public Map<String, String> generateEmail(String userPrompt, String tone, String recipient, String userSubject) {
+        return generateEmail(userPrompt, tone, recipient, userSubject, null);
+    }
+
+    public Map<String, String> generateEmail(String userPrompt, String tone, String recipient, String userSubject, String sender) {
         String systemInstruction = getToneInstruction(tone);
 
         StringBuilder fullPrompt = new StringBuilder();
         fullPrompt.append(systemInstruction).append("\n\n");
+        if (sender != null && !sender.isBlank()) {
+            fullPrompt.append("Sender / Written by: ").append(sender).append("\n");
+        }
         if (recipient != null && !recipient.isBlank()) {
             fullPrompt.append("Recipient: ").append(recipient).append("\n");
         }
