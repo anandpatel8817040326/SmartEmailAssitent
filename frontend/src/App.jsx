@@ -403,6 +403,16 @@ function App() {
           currentUser={currentUser}
           onSwitchToStudio={() => setActiveView('studio')}
           onSwitchToHistory={() => setActiveView('history')}
+          onLoadSampleToStudio={(sample) => {
+            if (sample.prompt) setPrompt(sample.prompt);
+            if (sample.subject) setSubject(sample.subject);
+            if (sample.tone) setSelectedTone(sample.tone);
+            if (sample.body) setGeneratedBody(sample.body);
+            setGuestMode(true);
+            setActiveView('studio');
+            showAlert('info', `Loaded "${sample.title || 'Preset'}" into AI Studio.`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         />
 
         <AuthModal
@@ -536,6 +546,15 @@ function App() {
           currentUser={currentUser}
           onSwitchToStudio={() => setActiveView('studio')}
           onSwitchToHistory={() => setActiveView('history')}
+          onLoadSampleToStudio={(sample) => {
+            if (sample.prompt) setPrompt(sample.prompt);
+            if (sample.subject) setSubject(sample.subject);
+            if (sample.tone) setSelectedTone(sample.tone);
+            if (sample.body) setGeneratedBody(sample.body);
+            setActiveView('studio');
+            showAlert('info', `Loaded "${sample.title || 'Preset'}" into AI Studio.`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         />
       )}
 
